@@ -26,6 +26,13 @@ describe("Thermostat", () => {
     expect(thermostat.powerSavingMode).toEqual(true)
   });
 
+  it("can reset the temperature to 20", () => {
+    thermostat.up(10)
+    thermostat.reset()
+    expect(thermostat.temperature).toEqual(20)
+  });
+  
+
   it("can increase the temperature", () => {
     thermostat.up(1)
     expect(thermostat.temperature).toEqual(21)

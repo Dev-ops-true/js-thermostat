@@ -32,4 +32,8 @@ class Thermostat {
   ecomode(arg) {
     this.powerSavingMode = arg
   }
+
+  reset() {
+    this.temperature = 20
+  }
 }
