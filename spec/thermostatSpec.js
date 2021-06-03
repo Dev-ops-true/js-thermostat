@@ -30,4 +30,9 @@ describe("Thermostat", () => {
     expect(thermostat.temperature).toEqual(10)
   });
 
+  it("has a max of 25 when power saving mode is on", () => {
+    thermostat.up(10)
+    expect(thermostat.temperature).toEqual(25)
+  });
+
 });

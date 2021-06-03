@@ -5,7 +5,11 @@ class Thermostat {
   }
 
   up(setting) {
-    this.temperature += setting
+    if (25 < (this.temperature += setting) && this.powerSavingMode === true) {
+      this.temperature = 25
+    } else {
+      this.temperature + setting
+    }
   }
 
   down(setting) {
