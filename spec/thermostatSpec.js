@@ -59,4 +59,19 @@ describe("Thermostat", () => {
     expect(thermostat.temperature).toEqual(32)
   });
 
+  it("can display low usage on the thermostat", () => {
+    thermostat.down(3)
+    expect(thermostat.usage()).toEqual("low-usage")
+  });
+
+  it("can display medium usage on the thermostat", () => {
+    thermostat.up(3)
+    expect(thermostat.usage()).toEqual("medium-usage")
+  });
+
+  it("can display high usage on the thermostat", () => {
+    thermostat.temperature = 28
+    expect(thermostat.usage()).toEqual("high-usage")
+  });
+
 });
