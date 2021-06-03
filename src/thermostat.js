@@ -7,4 +7,8 @@ class Thermostat {
   up(setting) {
     this.temperature += setting
   }
+
+  down(setting) {
+    this.temperature -= setting
+  }
 }
