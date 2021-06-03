@@ -29,7 +29,7 @@ class Thermostat {
     }
  }
 
-  flatout() {
-    this.powerSavingMode = false
+  ecomode(arg) {
+    this.powerSavingMode = arg
   }
 }
