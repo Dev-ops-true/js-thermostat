@@ -15,6 +15,11 @@ describe("Thermostat", () => {
     expect(thermostat.powerSavingMode).toEqual(true)
   });
 
+  it("can turn off power saving mode", () => {
+    thermostat.flatout()
+    expect(thermostat.powerSavingMode).toEqual(false)
+  });
+
   it("can increase the temperature", () => {
     thermostat.up(1)
     expect(thermostat.temperature).toEqual(21)
@@ -33,6 +38,12 @@ describe("Thermostat", () => {
   it("has a max of 25 when power saving mode is on", () => {
     thermostat.up(10)
     expect(thermostat.temperature).toEqual(25)
+  });
+
+  it("has a max of 32 when power saving mode is off", () => {
+    thermostat.flatout()
+    thermostat.up(25)
+    expect(thermostat.temperature).toEqual(32)
   });
 
 });

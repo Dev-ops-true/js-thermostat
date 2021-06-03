@@ -5,12 +5,19 @@ class Thermostat {
   }
 
   up(setting) {
-    if (25 < (this.temperature += setting) && this.powerSavingMode === true) {
-      this.temperature = 25
-    } else {
-      this.temperature + setting
-    }
-  }
+    if (this.powerSavingMode === true) {
+        if (25 < (this.temperature += setting)) {
+          this.temperature = 25
+      } else {
+          this.temperature + setting
+      } 
+    }else {
+        if (32 < (this.temperature += setting)) {
+          this.temperature = 32
+        } else {
+          this.temperature + setting
+      }
+  }}
 
   down(setting) {
     var currentTemp = this.temperature
@@ -21,4 +28,8 @@ class Thermostat {
       this.temperature -= setting;
     }
  }
+
+  flatout() {
+    this.powerSavingMode = false
+  }
 }
