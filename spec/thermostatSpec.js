@@ -17,7 +17,14 @@ describe("Thermostat", () => {
   });
 
   it("can decrease the temperature", () => {
+    console.log(thermostat.temperature)
     thermostat.down(1)
     expect(thermostat.temperature).toEqual(19)
   });
+
+  it("has a minimum temperature of 10 degrees", () => {
+    thermostat.down(19)
+    expect(thermostat.temperature).toEqual(10)
+  });
+
 });

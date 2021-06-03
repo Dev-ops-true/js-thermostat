@@ -1,5 +1,4 @@
 class Thermostat {
-
   constructor(temperature = 20) {
     this.temperature = temperature;
   }
@@ -9,6 +8,12 @@ class Thermostat {
   }
 
   down(setting) {
-    this.temperature -= setting
-  }
+    var currentTemp = this.temperature
+
+    if (10 > (currentTemp -= setting)) {
+      this.temperature = 10;
+    } else { 
+      this.temperature -= setting;
+    }
+ }
 }
