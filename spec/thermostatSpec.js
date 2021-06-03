@@ -11,13 +11,16 @@ describe("Thermostat", () => {
     expect(thermostat.temperature).toEqual(20)
   });
 
+  it("power saving mode is on by default", () => {
+    expect(thermostat.powerSavingMode).toEqual(true)
+  });
+
   it("can increase the temperature", () => {
     thermostat.up(1)
     expect(thermostat.temperature).toEqual(21)
   });
 
   it("can decrease the temperature", () => {
-    console.log(thermostat.temperature)
     thermostat.down(1)
     expect(thermostat.temperature).toEqual(19)
   });
