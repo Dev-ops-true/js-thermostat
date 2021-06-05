@@ -1,49 +1,73 @@
+  
+'use strict';
+
 class Thermostat {
-  constructor(temperature = 20, powerSavingMode = true) {
-    this.temperature = temperature
-    this.powerSavingMode = powerSavingMode;
+
+  constructor() {
+    this.DEFAULT_TEMPERATURE = 20
+    this.temperature = this.DEFAULT_TEMPERATURE;
+    this.powerSavingMode = true;
+    this.MINIMUM_TEMPERATURE = 10;
+    this.MAX_LIMIT_PSM_ON = 25;
+    this.MAX_LIMIT_PSM_OFF = 32;
+    this.MEDIUM_ENERGY_USAGE_LIMIT = 18;
+    this.HIGH_ENERGY_USAGE_LIMIT = 25
   }
 
-  up(setting) {
-    if (this.powerSavingMode === true) {
-        if (25 < (this.temperature += setting)) {
-          this.temperature = 25
-      } else {
-          this.temperature + setting
-      } 
-    }else {
-        if (32 < (this.temperature += setting)) {
-          this.temperature = 32
-        } else {
-          this.temperature + setting
-      }
-  }}
+  getCurrentTemperature() {
+    return this.temperature
+  }
 
-  down(setting) {
-    var currentTemp = this.temperature
-
-    if (10 > (currentTemp -= setting)) {
-      this.temperature = 10;
-    } else { 
-      this.temperature -= setting;
+  up() {
+    if (this.isMaximumTemperature()) {
+      return;
     }
- }
-
-  ecomode(arg) {
-    this.powerSavingMode = arg
+    this.temperature += 1
   }
 
-  reset() {
-    this.temperature = 20
+  down() {
+    if (this.isMinimumTeperature()) {
+      return;
+    }
+    this.temperature -= 1
   }
 
-  usage() {
-    if (this.temperature < 18 ) {
-      return "low-usage";
-    } else if (this.temperature <= 25){
-      return "medium-usage";
+  isMinimumTeperature() {
+    return this.temperature === this.MINIMUM_TEMPERATURE;
+  }
+
+  isMaximumTemperature() {
+    if (this.isPowerSavingModeOn() === false) {
+      return this.temperature === this.MAX_LIMIT_PSM_OFF
     } else {
-      return "high-usage"
+      return this.temperature === this.MAX_LIMIT_PSM_ON
     }
   }
+
+  isPowerSavingModeOn() {
+    return this.powerSavingMode === true;
+  }
+
+  switchPowerSavingModeOff() {
+    this.powerSavingMode = false;
+  }
+
+  switchPowerSavingModeOn() {
+    this.powerSavingMode = true
+  }
+
+  resetTemperature() {
+    this.temperature = this.DEFAULT_TEMPERATURE;
+  }
+
+  energyUsage() {
+    if (this.temperature < this.MEDIUM_ENERGY_USAGE_LIMIT) {
+      return 'low-usage';
+    } else if (this.temperature < this.HIGH_ENERGY_USAGE_LIMIT) {
+      return 'medium-usage';
+    } else {
+      return 'high-usage';
+    }
+  }
+
 }
