@@ -5,33 +5,33 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <script src="interface.js"></script>
   <title>Thermostat</title>
 </head>
 <body>
 
-  <main class="landing-page">
+  <main id="usage" class="medium-usage">
     <div class="left">
-      <div class="currenttemp">
-        <span><h3>Current Temperature</h3></span>
+      <div class="thermostat">
+        <h3 id="temperature"><span></span></h3>
       </div>
       <div class="adjusttemp">
         <div>
-          <button class="up">+</button>
+          <button id="temperature-up">+</button>
         </div>
         <div>
-          <button class="down">-</button>
+          <button id="temperature-down">-</button>
         </div>
       </div>
   
-      <div class="ecomode">
-        <input type="checkbox" name="ecomode" id="switch" class="checkbox">
-        <label for="switch" class="toggle">
-        </label>
-  
+      <div class="powersaving">
+        Power Saving Mode is <span id="power-saving-status">On</span>
+        <button id="powersaving-on">PSM On</button>
+        <button id="powersaving-off">PSM Off</button>
       </div>
   
       <div class="reset">
-        <button id="reset">Reset</button>
+        <button id="temperature-reset">Reset</button>
       </div>
     </div>
   
